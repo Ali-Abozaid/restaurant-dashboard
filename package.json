@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "start:web": "ng serve",
+    "generate:data": "node server/generate-dataset.mjs",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

@@ -2,6 +2,16 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.28.
 
+## Dataset
+
+Generate the 50,000 menu items before starting the mock API. The generator uses a fixed seed, so every run writes the same ids and prices. The JSON file stays local and is not committed.
+
+```bash
+npm run generate:data
+```
+
+That command writes `server/data/menu-items.json`. Start the API only after this file exists.
+
 ## Development server
 
 To start a local development server, run:
