@@ -1,0 +1,24 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.brand {
+  margin-right: 1.5rem;
+  font-weight: 500;
+}
+
+nav {
+  display: flex;
+  gap: 0.25rem;
+}
+
+a.active {
+  background: color-mix(in srgb, var(--mat-sys-on-primary) 14%, transparent);
+}
+
+main {
+  flex: 1;
+  padding: 1.5rem;
+}
