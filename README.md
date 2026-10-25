@@ -4,15 +4,36 @@ A menu dashboard for 50,000 items. The browser never downloads the full dataset.
 
 ## Setup
 
-Use two terminals from this folder. Generate the dataset before starting the API. The generator uses a fixed seed, so every run writes the same ids and prices. `server/data/menu-items.json` stays local and is not committed.
+### Prerequisites
+
+- Node.js and npm
+- Two terminal windows
+
+### 1. Install dependencies and generate the dataset
+
+Run these commands from the project root, one at a time:
 
 ```bash
 npm install
+```
+
+```bash
 npm run generate:data
+```
+
+The generator creates 50,000 deterministic menu items in `server/data/menu-items.json`. This file is generated locally and is not committed to Git.
+
+### 2. Start the mock API
+
+In the first terminal:
+
+```bash
 npm run start:api
 ```
 
-`start:api` loads that file and listens on `http://localhost:3000`. If the file is missing, the API tells you to run `generate:data` first.
+The API listens at `http://localhost:3000`. If the dataset is missing, generate it before starting the API.
+
+### 3. Start Angular
 
 In the second terminal:
 
@@ -20,7 +41,9 @@ In the second terminal:
 npm start
 ```
 
-Open `http://localhost:4200/`. `ng serve` proxies `/api` to the mock API, so the Angular services call relative URLs.
+Open `http://localhost:4200/` in your browser.
+
+Angular proxies `/api` requests to the mock API, so the frontend uses relative API URLs.
 
 ## Architecture
 
@@ -49,6 +72,15 @@ The edit dialog validates price (`required`, `min(0)`) and availability (`requir
 - The table tracks `item.id`.
 - Category counts and the other KPIs are aggregated in the API process.
 
+## What to Try
+
+- Search for menu items by name.
+- Filter by restaurant, branch, category, and price range.
+- Change sorting and navigate between pages.
+- Edit an item's price or availability and verify that the dashboard statistics refresh.
+- Switch between Arabic and English, and between light and dark themes.
+- Run `npm test` to verify the main data-loading and update behaviors.
+
 ## Tests
 
 ```bash
@@ -69,7 +101,3 @@ Vitest covers three behaviors with `HttpClient` mocked:
 - An edit can change price and availability only.
 - The average price is rounded to 4 decimals. Two decimals would hide a single price edit across 50,000 rows.
 - There is no authentication. The mock API accepts any PATCH.
-
-## What I would do next
-
-Add cursor or keyset paging if the dataset grew past memory, and move the file write to a real database with a transaction around the price update. I would also debounce only the search box, and leave page, sort, and select changes immediate.
