@@ -2,11 +2,12 @@ import { DecimalPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 
 import type { CategoryCount } from '../../../../core/models';
+import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 
 /** CSS bars for `MenuStats.byCategory`. The widest bar is the largest count. */
 @Component({
   selector: 'app-category-chart',
-  imports: [DecimalPipe],
+  imports: [DecimalPipe, TranslatePipe],
   templateUrl: './category-chart.component.html',
   styleUrl: './category-chart.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

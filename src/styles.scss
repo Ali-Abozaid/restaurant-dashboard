@@ -7,33 +7,146 @@
 
 html {
   height: 100%;
+  color-scheme: light;
   @include mat.theme(
     (
       color: (
-        primary: mat.$azure-palette,
-        tertiary: mat.$blue-palette,
+        primary: mat.$green-palette,
+        tertiary: mat.$red-palette,
       ),
-      typography: Roboto,
+      typography: (
+        brand-family: 'Plus Jakarta Sans',
+        plain-family: 'Plus Jakarta Sans',
+        bold-weight: 700,
+        medium-weight: 600,
+        regular-weight: 400,
+      ),
       density: 0,
     )
   );
+
+  // Editorial palette from the Zagros Vercel design.
+  --mat-sys-primary: #06382e;
+  --mat-sys-on-primary: #f6f1e6;
+  --mat-sys-primary-container: #e7efe9;
+  --mat-sys-on-primary-container: #06382e;
+  --paper: #f6f1e6;
+  --ink: #0c241c;
+  --muted: #5e6b64;
+  --line: rgba(12, 36, 28, 0.16);
+  --rule: #d31f2a;
+  --hover: #efe8d8;
+  --track: #e7dfd0;
+  --bar: #06382e;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --mat-sys-primary: #d7ead9;
+  --mat-sys-on-primary: #06382e;
+  --mat-sys-primary-container: #1d4a3c;
+  --mat-sys-on-primary-container: #e7f5ea;
+  --mat-sys-surface: #141c19;
+  --mat-sys-on-surface: #f3eee4;
+  --mat-sys-surface-container: #1c2622;
+  --mat-sys-surface-container-low: #1a221f;
+  --mat-sys-surface-container-high: #26312c;
+  --mat-sys-surface-container-highest: #31403a;
+  --mat-sys-outline: #8a978f;
+  --mat-sys-outline-variant: #3d4a44;
+  --mat-sys-on-surface-variant: #c5cfc8;
+  --mat-sys-error: #ffb4ab;
+  --mat-sys-on-error: #690005;
+  --mat-sys-error-container: #93000a;
+  --mat-sys-on-error-container: #ffdad6;
+  --paper: #141c19;
+  --ink: #f3eee4;
+  --muted: #b7c2bb;
+  --line: rgba(243, 238, 228, 0.16);
+  --rule: #ef6b72;
+  --hover: #24302b;
+  --track: #2c3833;
+  --bar: #e7d7b8;
 }
 
 body {
-  // Default the application to a light color theme. This can be changed to
-  // `dark` to enable the dark color theme, or to `light dark` to defer to the
-  // user's system settings.
-  color-scheme: light;
+  color-scheme: inherit;
 
   // Set a default background, font and text colors for the application using
   // Angular Material's system-level CSS variables. Learn more about these
   // variables at https://material.angular.dev/guide/system-variables
-  background-color: var(--mat-sys-surface);
-  color: var(--mat-sys-on-surface);
-  font: var(--mat-sys-body-medium);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Cairo, 'Plus Jakarta Sans', sans-serif;
 
   // Reset the user agent margin.
   margin: 0;
   height: 100%;
 }
-/* You can add global styles to this file, and also import other style files */
+html[lang='en'] body {
+  font-family: 'Plus Jakarta Sans', Cairo, sans-serif;
+}
+
+html[lang='en'] .page-head h1,
+html[lang='en'] .page-head .lede,
+html[lang='en'] .brand,
+html[lang='en'] .value,
+html[lang='en'] h2 {
+  font-family: Fraunces, Georgia, serif;
+}
+
+.page-head {
+  max-width: 44rem;
+}
+
+.page-head .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 0.9rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.page-head .rule {
+  width: 2rem;
+  height: 2px;
+  background: var(--rule);
+}
+
+.page-head h1 {
+  margin: 0;
+  color: var(--ink);
+  font-family: Amiri, Fraunces, Georgia, serif;
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 0.98;
+}
+
+.page-head .lede {
+  margin: 1.1rem 0 0;
+  max-width: 38rem;
+  color: var(--ink);
+  font-family: Amiri, Fraunces, Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.panel {
+  margin-top: 2rem;
+  padding: 1.5rem 0 0.25rem;
+  border-top: 1px solid var(--line);
+  background: transparent;
+}
+
+.mdc-button,
+.mat-mdc-unelevated-button,
+.mat-mdc-outlined-button,
+.mat-mdc-dialog-surface {
+  border-radius: 2px;
+}

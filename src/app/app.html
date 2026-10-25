@@ -1,10 +1,20 @@
-<mat-toolbar>
-  <span class="brand">Restaurant Data</span>
-  <nav>
-    <a mat-button routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-    <a mat-button routerLink="/menu" routerLinkActive="active">Menu Explorer</a>
-  </nav>
-</mat-toolbar>
+<header class="site-header">
+  <a class="brand" routerLink="/dashboard">
+    <span class="title">{{ 'app.brand' | t }}</span>
+  </a>
+  <div class="header-actions">
+    <nav>
+      <a routerLink="/dashboard" routerLinkActive="active">{{ 'app.dashboard' | t }}</a>
+      <a routerLink="/menu" routerLinkActive="active">{{ 'app.menu' | t }}</a>
+    </nav>
+    <button type="button" class="theme-toggle" (click)="locale.toggle()">
+      {{ 'lang.switch' | t }}
+    </button>
+    <button type="button" class="theme-toggle" (click)="theme.toggle()">
+      {{ theme.labelKey() | t }}
+    </button>
+  </div>
+</header>
 
 <main>
   <router-outlet />

@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 import type { Availability } from '../../../../core/models';
+import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 import { MenuStore } from '../../data/menu.store';
 
 interface MenuFilterFormValue {
@@ -20,7 +21,7 @@ interface MenuFilterFormValue {
 
 @Component({
   selector: 'app-menu-filters',
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, TranslatePipe],
   templateUrl: './menu-filters.component.html',
   styleUrl: './menu-filters.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

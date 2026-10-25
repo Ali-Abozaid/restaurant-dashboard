@@ -1,8 +1,8 @@
-<section class="chart" aria-label="Items by category">
-  <h2>Items by category</h2>
+<section class="chart" [attr.aria-label]="'chart.title' | t">
+  <h2>{{ 'chart.title' | t }}</h2>
 
   @if (rows().length === 0) {
-    <p class="empty">No categories to show.</p>
+    <p class="empty">{{ 'chart.empty' | t }}</p>
   } @else {
     <ul>
       @for (row of rows(); track row.category) {

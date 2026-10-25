@@ -6,18 +6,21 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import type { MenuItem, SortField } from '../../../../core/models';
+import { LocaleStore } from '../../../../core/i18n/locale.store';
+import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 import { MenuStore } from '../../data/menu.store';
 import { ItemEditDialogComponent } from '../item-edit-dialog/item-edit-dialog.component';
 
 @Component({
   selector: 'app-menu-table',
-  imports: [DatePipe, DecimalPipe, MatButtonModule, MatPaginatorModule, MatProgressBarModule],
+  imports: [DatePipe, DecimalPipe, MatButtonModule, MatPaginatorModule, MatProgressBarModule, TranslatePipe],
   templateUrl: './menu-table.component.html',
   styleUrl: './menu-table.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuTableComponent {
   protected readonly store = inject(MenuStore);
+  protected readonly locale = inject(LocaleStore);
   private readonly dialog = inject(MatDialog);
   private readonly injector = inject(Injector);
   protected readonly pageSizeOptions = [10, 25, 50, 100];

@@ -1,42 +1,48 @@
-<h1>Dashboard Overview</h1>
+<header class="page-head">
+  <p class="eyebrow"><span class="rule"></span> {{ 'dashboard.eyebrow' | t }}</p>
+  <h1>{{ 'dashboard.title' | t }}</h1>
+  <p class="lede">{{ 'dashboard.lede' | t }}</p>
+</header>
 
 @if (store.status() === 'loading') {
   <mat-progress-bar mode="indeterminate" />
   @if (!store.stats()) {
-    <p class="status">Loading menu statistics…</p>
+    <p class="status">{{ 'dashboard.loading' | t }}</p>
   }
 }
 
 @if (store.error(); as message) {
   <div class="banner" role="alert">
     <span>{{ message }}</span>
-    <button type="button" mat-button (click)="store.load()">Retry</button>
+    <button type="button" mat-button (click)="store.load()">{{ 'dashboard.retry' | t }}</button>
   </div>
 }
 
 @if (store.stats(); as stats) {
   @if (stats.totalItems === 0) {
-    <p class="empty">No menu items in the dataset.</p>
+    <p class="empty">{{ 'dashboard.empty' | t }}</p>
   } @else {
-    <section class="kpis" aria-label="Menu statistics">
-      <mat-card>
-        <p class="label">Total Menu Items</p>
+    <section class="kpis" [attr.aria-label]="'dashboard.statsLabel' | t">
+      <article class="kpi">
+        <p class="label">{{ 'dashboard.total' | t }}</p>
         <p class="value">{{ stats.totalItems | number }}</p>
-      </mat-card>
-      <mat-card>
-        <p class="label">Available Items</p>
+      </article>
+      <article class="kpi">
+        <p class="label">{{ 'dashboard.available' | t }}</p>
         <p class="value">{{ stats.availableItems | number }}</p>
-      </mat-card>
-      <mat-card>
-        <p class="label">Unavailable Items</p>
+      </article>
+      <article class="kpi">
+        <p class="label">{{ 'dashboard.unavailable' | t }}</p>
         <p class="value">{{ stats.unavailableItems | number }}</p>
-      </mat-card>
-      <mat-card>
-        <p class="label">Average Item Price</p>
+      </article>
+      <article class="kpi">
+        <p class="label">{{ 'dashboard.average' | t }}</p>
         <p class="value">{{ stats.averagePrice | number: '1.4-4' }}</p>
-      </mat-card>
+      </article>
     </section>
 
-    <app-category-chart [categories]="stats.byCategory" />
+    <section class="panel">
+      <app-category-chart [categories]="stats.byCategory" />
+    </section>
   }
 }

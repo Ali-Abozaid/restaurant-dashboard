@@ -1,10 +1,10 @@
 import { DecimalPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { CategoryChartComponent } from '../components/category-chart/category-chart.component';
+import { TranslatePipe } from '../../../core/i18n/translate.pipe';
 import { DashboardStore } from '../data/dashboard.store';
 
 @Component({
@@ -12,8 +12,8 @@ import { DashboardStore } from '../data/dashboard.store';
   imports: [
     DecimalPipe,
     MatButtonModule,
-    MatCardModule,
     MatProgressBarModule,
+    TranslatePipe,
     CategoryChartComponent,
   ],
   templateUrl: './dashboard-page.component.html',

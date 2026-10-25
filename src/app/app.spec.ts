@@ -21,8 +21,8 @@ describe('App', () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.brand')?.textContent).toContain('Restaurant Data');
-    expect(compiled.textContent).toContain('Dashboard');
-    expect(compiled.textContent).toContain('Menu Explorer');
+    expect(compiled.querySelector('.brand')?.textContent).toContain('بيانات المطاعم');
+    expect(compiled.textContent).toContain('لوحة المعلومات');
+    expect(compiled.textContent).toContain('استعراض القائمة');
   });
 });

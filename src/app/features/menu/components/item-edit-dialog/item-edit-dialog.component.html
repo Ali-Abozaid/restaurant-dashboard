@@ -1,27 +1,27 @@
-<h2 mat-dialog-title>Edit {{ item.name }}</h2>
+<h2 mat-dialog-title>{{ 'edit.title' | t }} {{ item.name }}</h2>
 
 <form [formGroup]="form" (ngSubmit)="save()">
   <mat-dialog-content class="content">
     <p class="id">{{ item.id }}</p>
 
     <mat-form-field>
-      <mat-label>Price</mat-label>
+      <mat-label>{{ 'edit.price' | t }}</mat-label>
       <input matInput type="number" min="0" step="0.01" formControlName="price" />
       @if (form.controls.price.hasError('required')) {
-        <mat-error>Price is required.</mat-error>
+        <mat-error>{{ 'edit.priceRequired' | t }}</mat-error>
       } @else if (form.controls.price.hasError('min')) {
-        <mat-error>Price must be 0 or greater.</mat-error>
+        <mat-error>{{ 'edit.priceMin' | t }}</mat-error>
       }
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Availability</mat-label>
+      <mat-label>{{ 'edit.availability' | t }}</mat-label>
       <mat-select formControlName="availability">
-        <mat-option value="available">Available</mat-option>
-        <mat-option value="unavailable">Unavailable</mat-option>
+        <mat-option value="available">{{ 'menu.available' | t }}</mat-option>
+        <mat-option value="unavailable">{{ 'menu.unavailable' | t }}</mat-option>
       </mat-select>
       @if (form.controls.availability.hasError('required')) {
-        <mat-error>Availability is required.</mat-error>
+        <mat-error>{{ 'edit.availabilityRequired' | t }}</mat-error>
       }
     </mat-form-field>
 
@@ -31,7 +31,9 @@
   </mat-dialog-content>
 
   <mat-dialog-actions align="end">
-    <button type="button" mat-button mat-dialog-close>Cancel</button>
-    <button type="submit" mat-flat-button [disabled]="form.invalid || store.saving()">Save</button>
+    <button type="button" mat-button mat-dialog-close>{{ 'edit.cancel' | t }}</button>
+    <button type="submit" mat-flat-button [disabled]="form.invalid || store.saving()">
+      {{ 'edit.save' | t }}
+    </button>
   </mat-dialog-actions>
 </form>

@@ -1,3 +1,13 @@
-<h1>Menu Data Explorer</h1>
-<app-menu-filters />
-<app-menu-table />
+<header class="page-head">
+  <p class="eyebrow"><span class="rule"></span> {{ 'menu.eyebrow' | t }}</p>
+  <h1>{{ 'menu.title' | t }}</h1>
+  <p class="lede">{{ 'menu.lede' | t }}</p>
+</header>
+
+<section class="panel">
+  <app-menu-filters />
+</section>
+
+<section class="panel table-panel">
+  <app-menu-table />
+</section>

@@ -1,6 +1,7 @@
 .total {
-  margin: 0.5rem 0;
-  font-weight: 500;
+  margin: 0.85rem 0 0.35rem;
+  color: var(--muted);
+  font-weight: 600;
 }
 
 .table-wrap {
@@ -14,10 +15,18 @@ table {
 
 th,
 td {
-  padding: 0.5rem 0.75rem;
-  text-align: left;
-  border-bottom: 1px solid var(--mat-sys-outline-variant);
+  padding: 0.7rem 0.75rem;
+  text-align: start;
+  border-bottom: 1px solid var(--line);
   white-space: nowrap;
+}
+
+th {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 th button {
@@ -30,7 +39,7 @@ tbody tr {
 }
 
 tbody tr:hover {
-  background: var(--mat-sys-surface-container);
+  background: var(--hover);
 }
 
 .empty {
@@ -45,7 +54,7 @@ tbody tr:hover {
   gap: 1rem;
   margin: 0.5rem 0;
   padding: 0.5rem 1rem;
-  border-radius: 8px;
+  border-radius: 2px;
   background: var(--mat-sys-error-container);
   color: var(--mat-sys-on-error-container);
 }

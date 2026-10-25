@@ -5,37 +5,37 @@
 @if (store.error(); as message) {
   <div class="banner" role="alert">
     <span>{{ message }}</span>
-    <button type="button" mat-button (click)="store.reload()">Retry</button>
+    <button type="button" mat-button (click)="store.reload()">{{ 'menu.retry' | t }}</button>
   </div>
 }
 
-<p class="total">{{ store.total() | number }} matching items</p>
+<p class="total">{{ store.total() | number }} {{ 'menu.matching' | t }}</p>
 
 <div class="table-wrap">
   <table>
     <thead>
       <tr>
-        <th>Item ID</th>
+        <th>{{ 'menu.itemId' | t }}</th>
         <th>
           <button type="button" mat-button (click)="store.setSort('name')">
-            Name {{ sortMark('name') }}
+            {{ 'menu.name' | t }} {{ sortMark('name') }}
           </button>
         </th>
-        <th>Restaurant</th>
-        <th>Branch</th>
-        <th>Category</th>
+        <th>{{ 'menu.restaurant' | t }}</th>
+        <th>{{ 'menu.branch' | t }}</th>
+        <th>{{ 'menu.category' | t }}</th>
         <th>
           <button type="button" mat-button (click)="store.setSort('price')">
-            Price {{ sortMark('price') }}
+            {{ 'menu.price' | t }} {{ sortMark('price') }}
           </button>
         </th>
-        <th>Availability</th>
+        <th>{{ 'menu.availability' | t }}</th>
         <th>
           <button type="button" mat-button (click)="store.setSort('lastUpdated')">
-            Last updated {{ sortMark('lastUpdated') }}
+            {{ 'menu.lastUpdated' | t }} {{ sortMark('lastUpdated') }}
           </button>
         </th>
-        <th>Actions</th>
+        <th>{{ 'menu.actions' | t }}</th>
       </tr>
     </thead>
     <tbody>
@@ -47,18 +47,20 @@
           <td>{{ item.branchName }}</td>
           <td>{{ item.category }}</td>
           <td>{{ item.price | number: '1.2-2' }}</td>
-          <td>{{ item.availability }}</td>
-          <td>{{ item.lastUpdated | date: 'medium' }}</td>
+          <td>
+            {{ item.availability === 'available' ? ('menu.available' | t) : ('menu.unavailable' | t) }}
+          </td>
+          <td>{{ item.lastUpdated | date: 'medium' : '' : locale.dateLocale() }}</td>
           <td>
             <button type="button" mat-button (click)="$event.stopPropagation(); edit(item)">
-              Edit
+              {{ 'menu.edit' | t }}
             </button>
           </td>
         </tr>
       } @empty {
         @if (store.status() === 'success') {
           <tr>
-            <td class="empty" colspan="9">No menu items match these filters.</td>
+            <td class="empty" colspan="9">{{ 'menu.empty' | t }}</td>
           </tr>
         }
       }
