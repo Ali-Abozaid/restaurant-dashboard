@@ -45,3 +45,4 @@ Thumbs.db
 
 # Generated 50k dataset. Commit the generator, not the output.
 /server/data/*.json
+/server/data/*.tmp

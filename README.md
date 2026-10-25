@@ -2,15 +2,18 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.28.
 
-## Dataset
+## Dataset and mock API
 
 Generate the 50,000 menu items before starting the mock API. The generator uses a fixed seed, so every run writes the same ids and prices. The JSON file stays local and is not committed.
 
 ```bash
 npm run generate:data
+npm run start:api
 ```
 
-That command writes `server/data/menu-items.json`. Start the API only after this file exists.
+`generate:data` writes `server/data/menu-items.json`. `start:api` loads that file and listens on `http://localhost:3000`. Start the API only after the file exists.
+
+In a second terminal, `ng serve` proxies `/api` to that server, so the Angular app calls `/api/...` without a hardcoded host.
 
 ## Development server
 
