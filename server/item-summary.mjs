@@ -69,5 +69,6 @@ export function buildFilterOptions(items) {
  * @param {number} value
  */
 function roundMoney(value) {
-  return Math.round(value * 100) / 100;
+  // Four decimals: one edited price must move the average of 50,000 items.
+  return Math.round(value * 10000) / 10000;
 }

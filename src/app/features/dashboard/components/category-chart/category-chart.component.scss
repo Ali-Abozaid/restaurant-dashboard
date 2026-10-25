@@ -1,0 +1,51 @@
+.chart {
+  margin-top: 1.5rem;
+}
+
+h2 {
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr) 4.5rem;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.65rem 0;
+}
+
+.name,
+.count {
+  font-size: 0.875rem;
+}
+
+.count {
+  text-align: right;
+}
+
+.track {
+  height: 0.75rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--mat-sys-surface-container-high);
+}
+
+.bar {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--mat-sys-primary);
+}
+
+.empty {
+  margin: 0;
+  color: var(--mat-sys-on-surface-variant);
+}

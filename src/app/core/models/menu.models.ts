@@ -59,3 +59,27 @@ export interface MenuStats {
   averagePrice: number;
   byCategory: CategoryCount[];
 }
+
+export interface RestaurantOption {
+  id: string;
+  name: string;
+}
+
+export interface BranchOption {
+  id: string;
+  name: string;
+  restaurantId: string;
+}
+
+/** Values for the menu filter dropdowns. */
+export interface FilterOptions {
+  restaurants: RestaurantOption[];
+  branches: BranchOption[];
+  categories: string[];
+}
+
+/** Body for `PATCH /api/items/:id`. Send only the fields that change. */
+export interface ItemUpdate {
+  price?: number;
+  availability?: Availability;
+}

@@ -1,11 +1,15 @@
 export type {
   Availability,
+  BranchOption,
   CategoryCount,
+  FilterOptions,
+  ItemUpdate,
   MenuItem,
   MenuPage,
   MenuQuery,
   MenuStats,
   RequestStatus,
+  RestaurantOption,
   SortField,
   SortOrder,
 } from './menu.models';

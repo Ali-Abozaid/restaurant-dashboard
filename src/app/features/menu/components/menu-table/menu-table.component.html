@@ -1,0 +1,75 @@
+@if (store.status() === 'loading') {
+  <mat-progress-bar mode="indeterminate" />
+}
+
+@if (store.error(); as message) {
+  <div class="banner" role="alert">
+    <span>{{ message }}</span>
+    <button type="button" mat-button (click)="store.reload()">Retry</button>
+  </div>
+}
+
+<p class="total">{{ store.total() | number }} matching items</p>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Item ID</th>
+        <th>
+          <button type="button" mat-button (click)="store.setSort('name')">
+            Name {{ sortMark('name') }}
+          </button>
+        </th>
+        <th>Restaurant</th>
+        <th>Branch</th>
+        <th>Category</th>
+        <th>
+          <button type="button" mat-button (click)="store.setSort('price')">
+            Price {{ sortMark('price') }}
+          </button>
+        </th>
+        <th>Availability</th>
+        <th>
+          <button type="button" mat-button (click)="store.setSort('lastUpdated')">
+            Last updated {{ sortMark('lastUpdated') }}
+          </button>
+        </th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of store.items(); track item.id) {
+        <tr (click)="edit(item)">
+          <td>{{ item.id }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.restaurantName }}</td>
+          <td>{{ item.branchName }}</td>
+          <td>{{ item.category }}</td>
+          <td>{{ item.price | number: '1.2-2' }}</td>
+          <td>{{ item.availability }}</td>
+          <td>{{ item.lastUpdated | date: 'medium' }}</td>
+          <td>
+            <button type="button" mat-button (click)="$event.stopPropagation(); edit(item)">
+              Edit
+            </button>
+          </td>
+        </tr>
+      } @empty {
+        @if (store.status() === 'success') {
+          <tr>
+            <td class="empty" colspan="9">No menu items match these filters.</td>
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
+</div>
+
+<mat-paginator
+  [length]="store.total()"
+  [pageIndex]="store.query().page - 1"
+  [pageSize]="store.query().pageSize"
+  [pageSizeOptions]="pageSizeOptions"
+  (page)="onPage($event)"
+/>

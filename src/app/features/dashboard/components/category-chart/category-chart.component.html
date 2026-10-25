@@ -1,0 +1,19 @@
+<section class="chart" aria-label="Items by category">
+  <h2>Items by category</h2>
+
+  @if (rows().length === 0) {
+    <p class="empty">No categories to show.</p>
+  } @else {
+    <ul>
+      @for (row of rows(); track row.category) {
+        <li>
+          <span class="name">{{ row.category }}</span>
+          <span class="track">
+            <span class="bar" [style.width.%]="row.width"></span>
+          </span>
+          <span class="count">{{ row.count | number }}</span>
+        </li>
+      }
+    </ul>
+  }
+</section>
